@@ -1,0 +1,9 @@
+services:
+  generator:
+    build: .
+    environment:
+      - GENERATORS=python,typescript-axios,graphql-schema
+    volumes:
+      - ./specs:/local/src:ro
+      - ./out:/local/out
+    # Run the generation script as defined in the Dockerfile

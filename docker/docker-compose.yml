@@ -1,0 +1,10 @@
+services:
+  generator:
+    image: ghcr.io/adomi-io/contract-builder-openapi:latest
+    environment:
+      - GENERATORS=python,typescript-axios,graphql-schema
+    volumes:
+      # Mount the specs directory from the docker folder
+      - ./specs:/local/src:ro
+      # Mount an output directory relative to this docker-compose file
+      - ./out:/local/out
