@@ -8,7 +8,7 @@
   <img src="/docs/static/logo.png" width="240" />
 </p>
 
-# 📜 Contract Builder 🏗️
+# 📜 Contract Builder - OpenAPI 🏗️
 
 A tool to turn your OpenAPI specs into working code. Drop your OpenAPI files in, and the builder automatically generates clients, types, and schemas for your favorite languages.
 
