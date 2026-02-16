@@ -5,14 +5,13 @@ FROM openapitools/openapi-generator-cli:v7.2.0
 WORKDIR /local
 
 # Copy the source directory into the container image
-COPY src /local/src
+COPY ./src/generate.sh /local/generate.sh
 
 # Create the directory for the generated output
 RUN mkdir -p /local/out
 
 # The default entrypoint in the base image is "docker-entrypoint.sh"
 # This script executes multiple generations for the identified specifications
-COPY src/generate.sh /local/generate.sh
 RUN chmod +x /local/generate.sh
 
 # Run the generation script as the container entrypoint

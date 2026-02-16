@@ -1,6 +1,8 @@
 services:
   generator:
-    build: .
+    build:
+      dockerfile: ./src/Dockerfile
+      context: .
     environment:
       - GENERATORS=python,typescript-axios,graphql-schema
       - GENERATOR_PYTHON_ADDITIONAL_PROPERTIES=identifierNamingConvention=snake_case,useSingleRequestParameter=true
