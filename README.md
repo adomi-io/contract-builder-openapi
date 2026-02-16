@@ -109,6 +109,21 @@ You can also pass it directly to Docker:
 docker run --rm -e GENERATORS="python,go" -v $(pwd)/specs:/local/src -v $(pwd)/out:/local/out contract-builder
 ```
 
+### Additional Options
+
+You can pass additional properties to specific generators using environment variables. This follows the naming convention `GENERATOR_{LANGUAGE}_ADDITIONAL_PROPERTIES`.
+
+For example, to configure the `python` and `graphql-schema` generators:
+
+```yaml
+environment:
+  - GENERATORS=python,graphql-schema
+  - GENERATOR_PYTHON_ADDITIONAL_PROPERTIES=identifierNamingConvention=snake_case,useSingleRequestParameter=true
+  - GENERATOR_GRAPHQL_SCHEMA_ADDITIONAL_PROPERTIES=withInterfaces=true
+```
+
+The language name is converted to uppercase, and hyphens are replaced with underscores (e.g., `typescript-axios` becomes `GENERATOR_TYPESCRIPT_AXIOS_ADDITIONAL_PROPERTIES`).
+
 ## Typical data flow
 
 - Developer updates `specs/petstore/api.yml`

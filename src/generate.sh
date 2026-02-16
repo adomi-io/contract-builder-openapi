@@ -15,13 +15,27 @@ generate_client() {
     
     echo "Generating $language client for $spec_path..."
     
+    # Construct the environment variable name for additional properties
+    # Convert language to uppercase and replace hyphens with underscores
+    local lang_env=$(echo "$language" | tr '[:lower:]' '[:upper:]' | tr '-' '_')
+    local env_var_name="GENERATOR_${lang_env}_ADDITIONAL_PROPERTIES"
+    
+    # Get the value of the environment variable using indirect reference
+    local additional_props="${!env_var_name}"
+    
+    local extra_args=()
+    if [ -n "$additional_props" ]; then
+        extra_args+=(--additional-properties="$additional_props")
+    fi
+
     # Run the openapi-generator-cli tool
     # The entrypoint script is provided by the base image
     /usr/local/bin/docker-entrypoint.sh generate \
         -i "$spec_path" \
         -g "$language" \
         -o "$OUT_DIR/$client_name/$language" \
-        --skip-validate-spec
+        --skip-validate-spec \
+        "${extra_args[@]}"
 }
 
 # Scan for all api.yml files in the source directory

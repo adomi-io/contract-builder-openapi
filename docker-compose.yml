@@ -3,6 +3,8 @@ services:
     build: .
     environment:
       - GENERATORS=python,typescript-axios,graphql-schema
+      - GENERATOR_PYTHON_ADDITIONAL_PROPERTIES=identifierNamingConvention=snake_case,useSingleRequestParameter=true
+      - GENERATOR_GRAPHQL_SCHEMA_ADDITIONAL_PROPERTIES=withInterfaces=true
     volumes:
       - ./specs:/local/src:ro
       - ./out:/local/out
