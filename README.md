@@ -61,31 +61,6 @@ docker compose up
 
 Check the `out/` directory for your generated clients.
 
-# Running from source
-
-Clone this repository, and open a terminal in the root directory.
-
-## Build the application
-
-> [!TIP]
-> You can also run `docker compose up --build`.
-
-Run `docker compose build`
-
-## Run the application
-
-Run the application by running
-
-`docker compose up`
-
-If you want to run the application all the time, start it with
-
-`docker compose up -d`
-
-To stop the application, run
-
-`docker compose down`
-
 # Adding new languages
 
 The logic lives in `src/generate.sh`, which uses the `GENERATORS` environment variable to determine which clients to build. You can use **any** [generator name](https://openapi-generator.tech/docs/generators) supported by OpenAPI Generator.
@@ -131,6 +106,31 @@ The language name is converted to uppercase, and hyphens are replaced with under
 - The generator container starts, scans `specs/`, and runs `generate.sh`
 - New code is written to `out/petstore/python`, `out/petstore/typescript-axios`, etc., depending on your `GENERATORS` setting.
 - Your app uses the updated clients immediately
+
+# Running from source
+
+Clone this repository, and open a terminal in the root directory.
+
+## Build the application
+
+> [!TIP]
+> You can also run `docker compose up --build`.
+
+Run `docker compose build`
+
+## Run the application
+
+Run the application by running
+
+`docker compose up`
+
+If you want to run the application all the time, start it with
+
+`docker compose up -d`
+
+To stop the application, run
+
+`docker compose down`
 
 ## About Adomi
 
